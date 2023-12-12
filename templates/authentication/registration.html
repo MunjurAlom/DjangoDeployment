@@ -1,0 +1,78 @@
+{% extends "layouts.html" %} {% block title %} Registration Page {% endblock %} 
+{% block content %}
+{% load static %}
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2 class="text-center"></h2>
+    </div>
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<!-- ======= Login Section ======= -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="row mt-5 justify-content-center" data-aos="fade-up">
+      <div class="col-lg-4">
+        <h4 class="text-center">Signup a New Account</h4><hr>
+        <form action="{% url 'signup' %}" method="post" role="form">
+          {% csrf_token %}
+          <div class="form-group mt-3">
+            <input
+              type="text"
+              class="form-control"
+              name="username"
+              id="username"
+              placeholder="Enter username"
+              required
+            />
+          </div>
+          <div class="form-group mt-3">
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              id="email"
+              placeholder="Email address"
+              required
+            />
+          </div>
+          <div class="form-group mt-3">
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="form-group mt-3">
+            <input
+              type="password"
+              class="form-control"
+              name="confirm_password"
+              id="conform_password"
+              placeholder="Conform password"
+              required
+            />
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-success btn-block">Signup</button>
+          </div>
+        </form><br>
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+        <small>Alreday have an account?<a href="{% url 'login' %}"> Login here</a></small>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Contact Section -->
+{% endblock %}

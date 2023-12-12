@@ -1,0 +1,73 @@
+{% extends "layouts.html" %} {% block title %} Login Page {% endblock %} 
+{% block content %}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2 class="text-center"></h2>
+    </div>
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<!-- ======= Login Section ======= -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="row mt-5 justify-content-center" data-aos="fade-up">
+      <div class="col-lg-4">
+        <h4 class="text-center">Login Your Account</h4><hr>
+        <form action="{% url 'login' %}" method="post" role="form">
+          {% csrf_token %}
+          <div class="form-group mt-3">
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              id="name"
+              placeholder="Enter Username"
+              required
+            />
+          </div>
+          <div class="form-group mt-3">
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+        
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <div class="form-group form-check">
+              <label class="form-check-label">
+                <small><input class="form-check-input" type="checkbox"> Remember me</small>
+              </label>
+            </div>
+          </div>
+          <div class="col-md-6 form-group mt-3 mt-md-0">
+            <small><a href="{% url 'forgot' %}"> Forgot password?</a></small>
+          </div>
+        </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-success btn-block">Login</button>
+          </div>
+
+        </form><br>
+        <small> Don't have an account?<a href="{% url 'signup' %}"> Signup now</a></small>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Contact Section -->
+{% endblock %}

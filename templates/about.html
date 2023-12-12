@@ -1,0 +1,118 @@
+{% extends "layouts.html" %}
+
+{% block title%}
+    About
+{% endblock %}
+
+{% block content%}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  
+    <div class="container">
+  
+      <div class="d-flex justify-content-between align-items-center">
+        <h4 class="text-center"></h4>
+      </div>
+  
+    </div>
+  </section><!-- End Breadcrumbs -->
+
+<!-- ======= About Us Section ======= -->
+<section id="about-us" class="about-us">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>About Us</h2>
+    </div>
+    
+    <div class="row content">
+      <div class="col-lg-6" data-aos="fade-right">
+        <h3>{{about_data.title}}</h3><br>
+        <img
+          src="{{about_data.image.url}} "
+          style="height: 300px; width: 400px"
+        />
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
+        <p>{{about_data.description}}</p>
+        <ul>
+          <li>
+            <i class="ri-check-double-line"></i> Web Development
+          </li>
+          <li>
+            <i class="ri-check-double-line"></i> Software Development
+          </li>
+        </ul>
+        <p class="fst-italic">
+          At ByteVortex Labs, we don't just create technology; we engineer experiences that empower businesses and individuals in the digital realm.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End About Us Section -->
+{% load static %}
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team section-bg">
+  <div class="container">
+
+    <div class="section-title" data-aos="fade-up">
+      <h2>Our <strong>Team</strong></h2>
+      <p>At ByteVortex Labs, our success is driven by a dedicated and skilled team of professionals. Our diverse team, comprised of experienced software and web developers, collaborates seamlessly to bring innovative technological solutions to life. Fueled by passion and expertise, each team member contributes to the dynamic and creative environment that defines ByteVortex Labs, ensuring that we consistently deliver high-quality, customized solutions to meet our clients' unique needs.</p>
+    </div>
+
+    <div class="row">
+
+      {% for team_data in team_data %}
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+        <div class="member" data-aos="fade-up">
+          <div class="member-img">
+            <img src="{{team_data.image.url}}" class="img-fluid" alt="">
+            <div class="social">
+              <a href="{{team_data.twitter_link}}" target=_blank><i class="bi bi-twitter"></i></a>
+              <a href="{{team_data.fb_link}}" target=_blank><i class="bi bi-facebook"></i></a>
+              <a href="{{team_data.insta_link}}" target=_blank><i class="bi bi-instagram"></i></a>
+              <a href="{{team_data.linkedin_link}}" target=_blank><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>{{team_data.name}}</h4>
+            <span>{{team_data.role_as_a}}</span>
+            <span>{{team_data.expertise}}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      
+    </div>
+
+  </div>
+</section><!-- End Our Team Section -->
+
+<!-- ======= Testimonials Section ======= -->
+<section id="testimonials" class="testimonials section-bg">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Testimonials</h2>
+    </div>
+
+    <div class="row">
+      {% for testimonials_data in testimonials_data %}
+      <div class="col-lg-6" data-aos="fade-up">
+        <div class="testimonial-item">
+          <img src="{{testimonials_data.image.url}}" class="testimonial-img" alt="">
+          <h3>{{testimonials_data.name}}</h3>
+          <h4>{{testimonials_data.role_as_a}}</h4>
+          <p>
+            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+            {{testimonials_data.description}}
+            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section><!-- End Testimonials Section -->
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "layouts.html" %} 
+{% block title%} Our Clients {% endblock %}
+
+{% block content %}
+{% load static %}
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+  
+      <div class="d-flex justify-content-between align-items-center">
+        <h4 class="text-center"></h4>
+      </div>
+  
+    </div>
+  </section><!-- End Breadcrumbs -->
+
+<!-- ======= Our Clients Section ======= -->
+<section id="clients" class="clients">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Clients</h2>
+    </div>
+
+    <div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">
+
+    {% for clnt in client  %}
+      <div class="col-lg-3 col-md-4 col-6">
+        <a href="{{clnt.link}}" target=_blank >
+        <div class="client-logo">
+          <img src="{{clnt.image.url}}" class="img-fluid" alt="{{clnt.name}}">
+        </div>
+      </a>
+      </div>
+      {% endfor %}
+
+    </div>
+    
+  </div>
+</section><!-- End Our Clients Section -->
+
+{% endblock %}
